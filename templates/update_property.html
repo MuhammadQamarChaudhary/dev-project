@@ -1,0 +1,105 @@
+<form
+  method="POST"
+  enctype="multipart/form-data"
+  style="max-width: 400px; margin: auto"
+>
+  {% csrf_token %}
+  <div style="margin-bottom: 20px">
+    <label for="id_name" style="display: block; font-weight: bold; color: #333"
+      >Name:</label
+    >
+    {{ form.name }}
+  </div>
+  <div style="margin-bottom: 20px">
+    <label for="id_email" style="display: block; font-weight: bold; color: #333"
+      >Email:</label
+    >
+    {{ form.email }}
+  </div>
+  <div style="margin-bottom: 20px">
+    <label
+      for="id_phone_no"
+      style="display: block; font-weight: bold; color: #333"
+      >Phone Number:</label
+    >
+    {{ form.phone_no }}
+  </div>
+  <div style="margin-bottom: 20px">
+    <label for="id_price" style="display: block; font-weight: bold; color: #333"
+      >Price:</label
+    >
+    {{ form.price }}
+  </div>
+  <div style="margin-bottom: 20px">
+    <label
+      for="id_listing_type"
+      style="display: block; font-weight: bold; color: #333"
+      >Listing Type:</label
+    >
+    {{ form.listing_type }}
+  </div>
+  <div style="margin-bottom: 20px">
+    <label
+      for="id_area_in_sqft"
+      style="display: block; font-weight: bold; color: #333"
+      >Area (Sqft):</label
+    >
+    {{ form.area_in_sqft }}
+  </div>
+  <div style="margin-bottom: 20px">
+    <label
+      for="id_no_of_rooms"
+      style="display: block; font-weight: bold; color: #333"
+      >Number of Rooms:</label
+    >
+    {{ form.no_of_rooms }}
+  </div>
+  <div style="margin-bottom: 20px">
+    <label
+      for="id_no_of_bathrooms"
+      style="display: block; font-weight: bold; color: #333"
+      >Number of Bathrooms:</label
+    >
+    {{ form.no_of_bathrooms }}
+  </div>
+  <div style="margin-bottom: 20px">
+    <label
+      for="id_property_type"
+      style="display: block; font-weight: bold; color: #333"
+      >Property Type:</label
+    >
+    {{ form.property_type }}
+  </div>
+  <div style="margin-bottom: 20px">
+    <label
+      for="id_home_address"
+      style="display: block; font-weight: bold; color: #333"
+      >Home Address:</label
+    >
+    {{ form.home_address }}
+  </div>
+  <div style="margin-bottom: 20px">
+    <label for="id_city" style="display: block; font-weight: bold; color: #333"
+      >City:</label
+    >
+    {{ form.city }}
+  </div>
+  <div style="margin-bottom: 20px">
+    <label for="id_image" style="display: block; font-weight: bold; color: #333"
+      >Image:</label
+    >
+    {{ form.image }}
+  </div>
+  <button
+    type="submit"
+    class="btn btn-primary"
+    style="
+      display: block;
+      width: 100%;
+      background-color: #b6cbe3;
+      border-color: #000407;
+    "
+  >
+    Update Property
+  </button>
+</form>

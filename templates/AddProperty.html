@@ -1,0 +1,215 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock title %}
+{% block body %}
+
+        <!-- Header Start -->
+        <div class="container-fluid header bg-white p-0">
+            <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
+                <div class="col-md-6 p-5 mt-lg-5">
+                    <h1 class="display-5 animated fadeIn mb-4">Add Your Listing</h1> 
+                        <nav aria-label="breadcrumb animated fadeIn">
+                        <ol class="breadcrumb text-uppercase">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                            <li class="breadcrumb-item text-body active" aria-current="page">Add Your Listing</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="col-md-6 animated fadeIn">
+                    <img class="img-fluid" src="../static/img/header.jpg" alt="">
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+
+
+        
+
+
+        <!-- About Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="row g-5 align-items-center">
+                    
+		
+		
+
+			<div class="col-md-6 offset-md-3 mt-5">
+       		<div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                    <h2 class="mb-3">Add Your Listing/Property</h2>
+                </div>
+        
+        <form accept-charset="UTF-8" action="/addproperty" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="exampleInputName">Landlord's Name</label>
+            <input type="text" name="name" class="form-control" id="exampleInputName" placeholder="Enter your name" required="required">
+          </div>
+          {% for error in form.name.errors %}
+              <p style="color: red; font-size:10px">{{ error }}</p>
+          {% endfor %}
+	<br>
+
+	
+          <div class="form-group">
+            <label for="exampleInputEmail1" required="required">Email address</label>
+            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          </div>
+          {% for error in form.email.errors %}
+              <p style="color: red; font-size:10px">{{ error }}</p>
+          {% endfor %}
+	<br>
+
+	
+	<div class="form-group">
+            <label for="exampleInputName">Phone Number</label>
+            <input type="text" name="phone_no" class="form-control" id="exampleInputName" placeholder="Enter your phone" required="required">
+          </div>
+          {% for error in form.phone_no.errors %}
+              <p style="color: red; font-size:10px">{{ error }}</p>
+          {% endfor %}
+	<br>
+	<div class="form-group">
+            <label for="exampleInputName">Price </label>
+            <input type="text" name="price" class="form-control" id="exampleInputName" placeholder="Enter your Estimated Property Price" required="required">
+          </div>
+          {% for error in form.price.errors %}
+              <p style="color: red; font-size:10px">{{ error }}</p>
+          {% endfor %}
+	<br>
+
+<div class="form-group">
+            <label for="exampleFormControlSelect1">Listing Type</label>
+            <select class="form-control" id="exampleFormControlSelect1" name="listing_type" required="required">
+              <option>Sale</option>
+              <option>Rent</option>
+               
+	  </select>
+          </div>
+          {% for error in form.listing_type.errors %}
+              <p style="color: red; font-size:10px">{{ error }}</p>
+          {% endfor %}
+<br>
+
+	<div class="form-group">
+            <label for="exampleFormControlSelect1">Area Size</label>
+            <select class="form-control" id="exampleFormControlSelect1" name="area_in_sqft" required="required">
+              <option>900 Sqft</option>
+              <option>800 Sqft</option>
+              <option>700 Sqft</option>
+	      <option>1000 Sqft</option>
+               
+	  </select>
+          </div>
+    {% for error in form.area_in_sqft.errors %}
+    <p style="color: red; font-size:10px">{{ error }}</p>
+    {% endfor %}
+	<br>
+
+	<div class="form-group">
+            <label for="exampleFormControlSelect1">Number of Rooms</label>
+            <select class="form-control" id="exampleFormControlSelect1" name="no_of_rooms" required="required">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+	      <option>4</option>
+               
+	  </select>
+          </div>
+          {% for error in form.no_of_rooms.errors %}
+          <p style="color: red; font-size:10px">{{ error }}</p>
+          {% endfor %}
+	<br>
+
+	<div class="form-group">
+            <label for="exampleFormControlSelect1">Number of Bathrooms</label>
+            <select class="form-control" id="exampleFormControlSelect1" name="no_of_bathrooms" required="required">
+              <option>1</option>
+              <option>2</option>
+              
+               
+	  </select>
+          </div>
+          {% for error in form.no_of_bathrooms.errors %}
+              <p style="color: red; font-size:10px">{{ error }}</p>
+          {% endfor %}	
+	<br>
+
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Type of Property</label>
+            <select class="form-control" id="exampleFormControlSelect1" name="property_type" required="required">
+              <option>Shop</option>
+              <option>Apartment</option>
+              <option>Home</option>
+	      <option>Vila</option>
+              <option>Office</option>
+		 <option>Building</option>	
+
+
+	  </select>
+          </div>
+          {% for error in form.property_type.errors %}
+              <p style="color: red; font-size:10px">{{ error }}</p>
+          {% endfor %}
+         
+<br>
+	<div class="form-group">
+            <label for="exampleInputName">Home Address</label>
+            <input type="text" name="home_address" class="form-control" id="exampleInputName" placeholder="Enter your home address" required="required">
+          </div>
+          {% for error in form.home_address.errors %}
+          <p style="color: red; font-size:10px">{{ error }}</p>
+          {% endfor %}
+	<br>	
+
+		
+
+
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">City</label>
+            <select class="form-control" id="exampleFormControlSelect1" name="city" required="required">
+              <option>Dublin</option>
+              <option>Galway</option>
+              <option>Cork</option>
+	      <option>Limerick</option>
+               
+	  </select>
+          </div>
+          {% for error in form.city.errors %}
+          <p style="color: red; font-size:10px">{{ error }}</p>
+          {% endfor %}
+
+
+
+          <div class="form-group mt-3">
+            <label class="mr-2">Upload Your Home Images:</label>
+            <input type="file" name="image">
+          </div>
+          {% for error in form.image.errors %}
+          <p style="color: red; font-size:10px">{{ error }}</p>
+          {% endfor %}
+          <hr>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+        <!-- About End -->
+
+{% endblock body %}
+
+        
+
+
+
+
+
+
+
+
+      
