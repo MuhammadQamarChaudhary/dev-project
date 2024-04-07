@@ -32,7 +32,7 @@ DEBUG = True
 if os.getcwd() == '/app':
     DEBUG = False
 
-ALLOWED_HOSTS = ['187383050a344f37b43b840adbc1b5ca.vfs.cloud9.eu-west-1.amazonaws.com']
+ALLOWED_HOSTS = ['eb-project-env.eba-sm9zuxms.eu-west-1.elasticbeanstalk.com','187383050a344f37b43b840adbc1b5ca.vfs.cloud9.eu-west-1.amazonaws.com']
 
 
 # Application definition
