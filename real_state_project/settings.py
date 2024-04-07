@@ -38,6 +38,7 @@ ALLOWED_HOSTS = ['187383050a344f37b43b840adbc1b5ca.vfs.cloud9.eu-west-1.amazonaw
 # Application definition
 
 INSTALLED_APPS = [
+    'property'
     'property.apps.PropertyConfig',
     "django.contrib.admin",
     "django.contrib.auth",
