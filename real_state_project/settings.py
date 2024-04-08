@@ -32,13 +32,17 @@ DEBUG = True
 if os.getcwd() == '/app':
     DEBUG = False
 
-ALLOWED_HOSTS = ['eb-project-env.eba-sm9zuxms.eu-west-1.elasticbeanstalk.com','187383050a344f37b43b840adbc1b5ca.vfs.cloud9.eu-west-1.amazonaws.com']
+ALLOWED_HOSTS = ['eb-project-env.eba-sm9zuxms.eu-west-1.elasticbeanstalk.com','187383050a344f37b43b840adbc1b5ca.vfs.cloud9.eu-west-1.amazonaws.com'
+]
 
-
+CSRF_TRUSTED_ORIGINS = [
+    "https://example.com",  # Add your trusted origins here
+    "https://187383050a344f37b43b840adbc1b5ca.vfs.cloud9.eu-west-1.amazonaws.com",
+    # Add other trusted origins as needed
+]
 # Application definition
 
 INSTALLED_APPS = [
-    'property'
     'property.apps.PropertyConfig',
     "django.contrib.admin",
     "django.contrib.auth",
@@ -128,6 +132,8 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'real_state/static'),
 ]
+
