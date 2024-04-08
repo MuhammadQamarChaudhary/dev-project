@@ -1,17 +1,15 @@
 """
 Module for defining property models.
 """
-
 from django.db import models
 from django.contrib.auth.models import User
 
+
+# Create your models here.
 class Property(models.Model):
-    """
-    Model representing a property.
-    """
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE,default=1)
     name = models.CharField(max_length=255)
-    email = models.EmailField(max_length=255)
+    email = models.CharField(max_length=255)
     phone_no = models.CharField(max_length=16)
     price = models.DecimalField(max_digits=20, decimal_places=2)
     listing_type = models.CharField(max_length=50)
@@ -24,7 +22,4 @@ class Property(models.Model):
     image = models.ImageField(upload_to='property/')  # Specifies directory within MEDIA_ROOT
 
     def __str__(self):
-        """
-        String representation of the Property object.
-        """
         return self.name
