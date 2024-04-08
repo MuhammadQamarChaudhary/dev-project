@@ -62,9 +62,9 @@
                                         <p><i class="fa fa-map-marker-alt text-primary me-2"></i>{{ property.home_address }}</p>
                                     </div>
                                     {% if property.user == request.user %}
-                                    <a href="{% url 'delete_property' property.name %}" style="margin-top: -10px;"
+                                    <a href="{% url 'delete_property-1' property.name %}" style="margin-top: -10px;"
                                         class="btn btn-danger btn-sm">Delete</a>
-                                    <a href="{% url 'update_property' property.name %}"
+                                    <a href="{% url 'update_property-1' property.name %}"
                                         style="margin-top: -10px; margin-left: 5px;"
                                         class="btn btn-primary btn-sm">Update</a>
                                     {% endif %}

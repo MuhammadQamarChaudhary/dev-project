@@ -1,11 +1,12 @@
-from django.shortcuts import render, HttpResponse, redirect
+from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from datetime import datetime
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import logout, authenticate, login
-from .forms import SignUpForm
-from .forms import PropertyForm
+from .forms import SignUpForm, PropertyUpdateForm, PropertyForm
 from .models import Property
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 def index(request):
@@ -52,30 +53,62 @@ def user_logout(request):
     return redirect("/")
 
 def about(request):
-    return render(request, 'about.html') 
+    return render(request, 'about.html')
 
 def add_property(request):
     if request.method == 'POST':
         form = PropertyForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            property_instance = form.save(commit=False)
+            property_instance.user = request.user
+            property_instance.save()
+            print(form.cleaned_data)
             return redirect('/listing')  # Redirect to your desired URL
     else:
         form = PropertyForm()
+        print('else_block')
     return render(request, 'AddProperty.html', {'form': form})
 
 
 def contact(request):
-    return render(request, 'contact.html') 
+    return render(request, 'contact.html')
 
 def property_listing(request):
     properties = Property.objects.all()  # Retrieves all products from the database
     return render(request, 'propertylist.html', {'propertys': properties})
 
 def my_listing(request):
-    properties = Property.objects.filter(user=request.user)  # Retrieves all products from the database
+    properties = Property.objects.filter(user=request.user)
+    # Retrieves all products from the database
+    print('my_listings', properties)
     return render(request, 'mylisting.html', {'propertys': properties})
  
+@login_required
+def delete_property(request, property_name):
+    property_instance: Property = get_object_or_404(Property, name=property_name)
+    if property_instance.user == request.user:
+        property_instance.delete()
+        print('deleted')
+        return redirect('/mylisting')
+    else:
+        return render(request, 'error.html',
+                      {'message': 'You are not authorized to delete this property'})
+@login_required
+def update_property(request, property_name):
+    property_instance = get_object_or_404(Property, name=property_name)
+    if property_instance.user == request.user:
+        if request.method == 'POST':
+            form = PropertyUpdateForm(request.POST, request.FILES, instance=property_instance)
+            if form.is_valid():
+                form.save()
+                return redirect('/mylisting') # Redirect to your desired URL after successful update
+        else:
+            form = PropertyUpdateForm(instance=property_instance)
+        return render(request, 'update_property.html', 
+                      {'form': form, 'property_instance': property_instance})
+    else:
+        return render(request, 'error.html', {'message': 
+                                              'You are not authorized to update this property'})
     
 # def contact(request):
 #     # if request.method == "POST":
